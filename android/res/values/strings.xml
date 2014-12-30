@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hoops</string>
+    <string name="app_id">562559325457</string>
+    <string name="achievement_10_hoops_milestone">CgkIkaqY2a8QEAIQAg</string>
+    <string name="achievement_60_hoops__all_powerhoops_unlocked">CgkIkaqY2a8QEAIQAw</string>
+    <string name="achievement_collected_all_hoopblaster_hoops">CgkIkaqY2a8QEAIQBA</string>
+    <string name="achievement_50_hoops_in_hardcore_mode">CgkIkaqY2a8QEAIQBQ</string>
+    <string name="achievement_500_hoops_milestone">CgkIkaqY2a8QEAIQCQ</string>
+    <string name="leaderboard_hoops_highscores">CgkIkaqY2a8QEAIQAQ</string>
+
+</resources>
