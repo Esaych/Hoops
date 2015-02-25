@@ -395,7 +395,7 @@ public class Menu {
 		for (MenuButton b : buttons) {
 			String check = b.checkTouch(new Touch(x, y));
             if (check.equals("Play Game")) {
-                if (Options.getGameMode().equals("Multiplayer")) {
+                if (Options.getGameMode().equals(Options.GameType.MULTIPLAYER)) {
                     lastType = type;
                     mpIP = "";
                     toType = MenuType.MP_CHOOSE;

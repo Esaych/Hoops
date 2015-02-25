@@ -9,7 +9,7 @@ import com.esaych.world.World;
 public class LifeBar {
 
     private int max;
-    private int amount;
+    private float amount;
     private World world;
     private boolean saidSpawn;
 
@@ -30,13 +30,11 @@ public class LifeBar {
     }
 
     public void givePenalty(int score) {
-        int x = score / 10;
-        if (x > 5)
-            x = 5;
+        float x = score / 10f;
         inc(-x);
     }
 
-    public void inc(int num) {
+    public void inc(float num) {
         this.amount += num;
         if (amount < 0)
             reset();
@@ -59,15 +57,16 @@ public class LifeBar {
     public void render(SpriteBatch batcher, ShapeRenderer shapeRenderer) {
         batcher.end();
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+
+        shapeRenderer.setColor(new Color(154/255f, 177/255f, 211/255f, 1));
+        shapeRenderer.line(3, 52, 3, 297);
+        shapeRenderer.line(6, 52, 6, 297);
+
         shapeRenderer.setColor(Color.RED);
 
         tempAmount += (amount-tempAmount)*(Math.abs(5-tempAmount)+3)/2*delta;
 
-        shapeRenderer.rect(3, 47+(10-tempAmount)*25, 3, tempAmount*25);
-
-        shapeRenderer.setColor(Color.WHITE);
-        shapeRenderer.line(1, 52, 1, 297);
-        shapeRenderer.line(7, 52, 7, 297);
+        shapeRenderer.rect(3, 47 + (10 - tempAmount) * 25, 3, tempAmount * 25);
         shapeRenderer.end();
         batcher.begin();
         batcher.draw(AssetLoader.heart, 0, 45, 9, 7);

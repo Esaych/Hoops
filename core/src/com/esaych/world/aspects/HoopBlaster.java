@@ -39,15 +39,24 @@ public class HoopBlaster {
 	
 	public void removeHoop(Hoop hoop) {
 		hoopBlaster.remove(hoop);
+        System.out.println(blastAmount + " : " + hoopBlaster.size());
 		if (blastAmount > 100 && hoopBlaster.size() == 0) {
     		world.getGameScreen().addAchievement("CgkIkaqY2a8QEAIQAw");
     		blastAmount = 0;
 		}
 	}
-	
+
 	public boolean isBlasting() {
 		return blasting;
 	}
+
+    public void stopBlasting() {
+        blasting = false;
+    }
+
+    public void resume() {
+        blasting = true;
+    }
 	
 	public ArrayList<Hoop> getHoopsList() {
 		return hoopBlaster;

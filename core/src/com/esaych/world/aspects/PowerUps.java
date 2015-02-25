@@ -116,13 +116,18 @@ public class PowerUps {
 		}
 	}
 
+    private static int timeWithoutPowerHoop = 0;
+
 	public static void addRandomHoop(World world, int score, int highScore) {
 		if (score < 10)
 			return;
 		if (score % 10 == 0)
 			return;
-		if (((int) (Math.random()*10)) != 1)
-			return;
+		if (((int) (Math.random()*10)) != 1 && timeWithoutPowerHoop < 15) {
+            timeWithoutPowerHoop++;
+            return;
+        }
+        timeWithoutPowerHoop = 0;
 		ArrayList<PowerHoop> possible = new ArrayList<PowerHoop>();
 		if (highScore >= 10) {
 			possible.add(getPowerHoop(PowerType.INVINCIBLE, world));

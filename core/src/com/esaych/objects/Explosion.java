@@ -35,7 +35,7 @@ public class Explosion {
 			if (runTime > .9) 
 				world.terminateExplosion();
 		}
-		if (!world.getHoopBlaster().isBlasting() && world.getMultiBall().size() == 0) {
+		if (world.getMultiBall().size() == 0) {
 			for (Hoop hoop : world.getHoopBlaster().getHoopsList()) {
 				int degrees = 0;
 				Vector2 vec = new Vector2(pos.x - hoop.getPos().x, pos.y - hoop.getPos().y);

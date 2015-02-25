@@ -184,10 +184,14 @@ public abstract class GameWorld extends World {
 
 	public abstract void addHoopPoint();
 
+    private boolean hoopsWereBlasting = false;
+
 	public void playBombCollision() {
 		if (Options.getVolumes()[1])
 			AssetLoader.explode.play();
 		gs.gameState = GameState.FROZEN;
+        if (hoopBlaster.isBlasting())
+            hoopsWereBlasting = true;
 		exp = new Explosion(bomb.getPos().x, bomb.getPos().y, bomb.getRot(), this);
 		Gdx.input.vibrate(500);
 	}
@@ -204,16 +208,26 @@ public abstract class GameWorld extends World {
 			int x = (int) (Math.random() * getWidth());
 			int y = (int) (Math.random() * getHeight());
 			bomb.setPos(x, y);
-			PowerUps.addPower(new PowerUp(this, "2 Second Invincibility", AssetLoader.bcOrange, 2), score < 10);
+            PowerUps.addPower(new PowerUp(this, "2 Second Invincibility", AssetLoader.bcOrange, 2), score < 10);
+            if (hoopsWereBlasting) {
+                hoopsWereBlasting = false;
+                hoopBlaster.resume();
+            }
 		} else if (multiBall.size() > 0) {
 			Ball kill = multiBall.remove(0);
 			ball.setPos(kill.getPos().x, kill.getPos().y);
 			int x = (int) (Math.random() * getWidth());
 			int y = (int) (Math.random() * getHeight());
 			bomb.setPos(x, y);
-			PowerUps.addPower(new PowerUp(this, "2 Second Invincibility", AssetLoader.bcOrange, 2), score < 10);
-		} else
+            PowerUps.addPower(new PowerUp(this, "2 Second Invincibility", AssetLoader.bcOrange, 2), score < 10);
+            if (hoopsWereBlasting) {
+                hoopsWereBlasting = false;
+                hoopBlaster.resume();
+            }
+		} else {
             processExplosion();
+            hoopsWereBlasting = false;
+        }
 	}
 
     public abstract void processExplosion();
