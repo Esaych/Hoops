@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.esaych.hoops.screen.GameScreen;
@@ -19,7 +18,6 @@ import com.esaych.objects.hoop.LifeHoop;
 import com.esaych.objects.hoop.PowerHoop;
 import com.esaych.objects.physical.Ball;
 import com.esaych.objects.physical.ball.MultiBall;
-import com.esaych.world.aspects.LifeBar;
 import com.esaych.world.aspects.PowerUps;
 import com.esaych.world.worldtypes.DefaultWorld;
 import com.esaych.world.worldtypes.GameWorld;
@@ -131,11 +129,7 @@ public class Renderer {
         	batcher.begin();
 //        	}
         	//Draw life
-        	int life = world.getLife();
-        	float distance = world.getWidth(.5) - life*17/2;
-        	for (float a = distance; a < distance+life*17; a+=17) {
-        		batcher.draw(AssetLoader.life, a, 5, 7, 7, 15, 15, 1, 1, 0);
-        	}
+        	world.lives.render(batcher, world.getWidth());
 			
         	//Draw Broadcasts
         	world.broadcast.render(batcher);

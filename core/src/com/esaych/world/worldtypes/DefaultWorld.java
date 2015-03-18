@@ -52,6 +52,7 @@ public class DefaultWorld extends GameWorld {
 
         hoopBlaster.update(delta);
         lifeBar.update(delta);
+        lives.update(delta);
         manageAds();
     }
 
@@ -110,7 +111,7 @@ public class DefaultWorld extends GameWorld {
 
     @Override
     public void processExplosion() {
-        if (life <= 1) {
+        if (lives.getLife() <= 1) {
             Music.playEndMusic();
             HighScores.addHS(gameHighScore, Options.GameType.NORMAL, gs);
             HighScores.clearStreak();
@@ -169,7 +170,7 @@ public class DefaultWorld extends GameWorld {
         for (Hoop hoop : lifeHoops) {
             if (Intersector.overlaps(ball.getBounds(), hoop.getBounds())) {
                 deadHoops.add(hoop);
-                incLife(1);
+                lives.incLife(1, hoop.getPos().x, hoop.getPos().y);
                 lifeBar.reset(); //                               <Change
                 broadcast.bc("Life Hoop Collected", 3);
                 if (score % 10 == 0 && score > 0 && !recievedLife.contains(score)) {

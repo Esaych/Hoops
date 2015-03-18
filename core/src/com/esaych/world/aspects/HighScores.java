@@ -3,7 +3,6 @@ package com.esaych.world.aspects;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.esaych.hoops.screen.GameScreen;
 import com.esaych.io.AssetLoader;
 import com.esaych.io.menus.Options;

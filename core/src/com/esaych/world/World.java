@@ -15,9 +15,9 @@ import com.esaych.objects.physical.Bomb;
 import com.esaych.objects.physical.ball.MultiBall;
 import com.esaych.world.aspects.Broadcast;
 import com.esaych.world.aspects.HoopBlaster;
+import com.esaych.world.aspects.Lives;
 import com.esaych.world.aspects.PowerUps;
 import com.esaych.world.aspects.PowerUps.PowerType;
-import com.esaych.world.worldtypes.GameWorld;
 
 public abstract class World {
 
@@ -26,7 +26,6 @@ public abstract class World {
 	protected int score = 0;
 	protected int gameHighScore = 0;
 	protected int highScore;
-	protected int life = 0;
 	
 	protected Ball ball;
 	protected Bomb bomb;
@@ -40,6 +39,7 @@ public abstract class World {
 	protected Joystick joystick;
 	protected Menu menu;
 	protected Broadcast broadcast;
+	protected Lives lives;
 	
 	protected GameScreen gs;
 	
@@ -54,6 +54,7 @@ public abstract class World {
 		broadcast = new Broadcast(width);
 		hoopBlaster = new HoopBlaster(this);
 		multiBall = new ArrayList<MultiBall>();
+		lives = new Lives(0);
 	}
 	
 	public abstract void update(float delta, float runTime);
@@ -121,7 +122,7 @@ public abstract class World {
 	}
 	
 	public int getLife() {
-		return life;
+		return lives.getLife();
 	}
 	
 	public ArrayList<LifeHoop> getLifeHoops() {
@@ -133,11 +134,11 @@ public abstract class World {
 	}
 	
 	public void setLife(int l) {
-		life = l;
+		lives.setLife(l);
 	}
 	
 	public void incLife(int l) {
-		life += l;
+		lives.incLife(l);
 	}
 	
 	public boolean hasExplosion() {

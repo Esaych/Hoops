@@ -129,7 +129,7 @@ public abstract class MultiplayerWorld extends GameWorld {
 			Ball kill = multiBall.remove(0);
 			ball.setPos(kill.getPos().x, kill.getPos().y);
 			PowerUps.addPower(new PowerUp(this, "2 Second Invincibility", AssetLoader.bcOrange, 2), score < 10);
-		} else if (life <= 1) {
+		} else if (lives.getLife() <= 1) {
 			incScore(-5);
 			Music.playEndMusic();
 			HighScores.clearStreak();
@@ -201,7 +201,7 @@ public abstract class MultiplayerWorld extends GameWorld {
 
     @Override
     public void processExplosion() {
-        if (life <= 1) {
+        if (lives.getLife() <= 1) {
             Music.playEndMusic();
             HighScores.addHS(gameHighScore, Options.GameType.MULTIPLAYER, gs);
             HighScores.clearStreak();

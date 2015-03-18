@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.esaych.hoops.screen.GameScreen;
 import com.esaych.io.menus.Menu;
-import com.esaych.io.menus.MenuLabelSpecialAnimate;
 import com.esaych.io.touch.Joystick;
 import com.esaych.objects.Hoop;
 import com.esaych.objects.hoop.LifeHoop;

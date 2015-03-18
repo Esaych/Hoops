@@ -10,7 +10,6 @@ public class LifeBar {
 
     private int max;
     private float amount;
-    private World world;
     private boolean saidSpawn;
 
     public LifeBar(World world) {

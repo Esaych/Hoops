@@ -59,6 +59,7 @@ public abstract class GameWorld extends World {
     		collisionCheck();
 
 		hoopBlaster.update(delta);
+        lives.update(delta);
 
 		manageAds();
 	}
@@ -134,7 +135,7 @@ public abstract class GameWorld extends World {
 		for (Hoop hoop : lifeHoops) {
 			if (Intersector.overlaps(ball.getBounds(), hoop.getBounds())) {
 				deadHoops.add(hoop);
-				incLife(1);
+                lives.incLife(1, hoop.getPos().x, hoop.getPos().y);
 				broadcast.bc("Life Hoop Collected", 3);
 				if (score % 10 == 0 && score > 0 && !recievedLife.contains(score)) {
 					recievedLife.add(score);
