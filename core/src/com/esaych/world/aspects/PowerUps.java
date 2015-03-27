@@ -178,7 +178,7 @@ public class PowerUps {
                     color = new Color(247/255f, 1, 0, 1);
                 }
                 shapeRenderer.setColor(color);
-                shapeRenderer.rect(world.getWidth()-width-1, world.getHeight()-(4*powerSize), width, 3);
+                shapeRenderer.rect(world.getWidth()-width-1, world.getHeight()-(4*(powerSize+1)), width, 3);
                 powerSize--;
             }
             shapeRenderer.end();

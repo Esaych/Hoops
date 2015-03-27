@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.esaych.io.AssetLoader;
 import com.esaych.io.menus.Options;
 import com.esaych.objects.Hoop;
+import com.esaych.objects.PowerUp;
+import com.esaych.objects.hoop.PowerHoop;
 import com.esaych.world.World;
 
 public class HoopBlaster {
@@ -39,11 +41,10 @@ public class HoopBlaster {
 	
 	public void removeHoop(Hoop hoop) {
 		hoopBlaster.remove(hoop);
-        System.out.println(blastAmount + " : " + hoopBlaster.size());
-		if (blastAmount > 100 && hoopBlaster.size() == 0) {
-    		world.getGameScreen().addAchievement("CgkIkaqY2a8QEAIQAw");
-    		blastAmount = 0;
-		}
+        if (blastAmount > 100 && hoopBlaster.size() == 0) {
+            world.getGameScreen().addAchievement("CgkIkaqY2a8QEAIQBA");
+            blastAmount = 0;
+        }
 	}
 
 	public boolean isBlasting() {

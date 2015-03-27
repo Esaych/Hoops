@@ -53,7 +53,6 @@ public class Lives {
 				distance = (float) (worldWidth/2.0 - (life-1)*17.0/2);
 			else {
 				distance = (float) (worldWidth/2.0 - (life-1)*17.0/2 - 8.5/(cacheDst/100.0 + 1));
-				System.out.println(17.0/(cacheDst + 1));
 			}
 			float a = distance;
 			while (a < distance+(life-1)*17) {

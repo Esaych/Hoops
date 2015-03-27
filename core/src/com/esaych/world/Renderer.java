@@ -144,7 +144,7 @@ public class Renderer {
 
             //Draw LifeBar
             if(world instanceof DefaultWorld)
-                ((DefaultWorld) world).getLifeBar().render(batcher, shapeRenderer);
+                ((DefaultWorld) world).getLifeBar().render(batcher, shapeRenderer, world);
 
         	//Draw LifeHoops
         	for (LifeHoop hoop : world.getLifeHoops()) {
