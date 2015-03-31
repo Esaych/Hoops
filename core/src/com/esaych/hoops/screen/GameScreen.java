@@ -138,6 +138,7 @@ public class GameScreen implements Screen {
 				world.getExplosion().update(delta);
 			if (world instanceof MultiplayerWorld)
 				((MultiplayerWorld) world).checkReadLine();
+            world.getMenuTransition().update(delta, world);
 			renderer.render(runTime);
 			break;
 		case GAMEOVER:

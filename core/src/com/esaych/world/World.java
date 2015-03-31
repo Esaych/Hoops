@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.math.Vector2;
 import com.esaych.hoops.screen.GameScreen;
 import com.esaych.io.menus.Menu;
+import com.esaych.io.menus.MenuTransition;
 import com.esaych.io.menus.Options;
 import com.esaych.io.touch.Joystick;
 import com.esaych.objects.Explosion;
@@ -38,6 +39,7 @@ public abstract class World {
 	
 	protected Joystick joystick;
 	protected Menu menu;
+    protected MenuTransition menuTransition;
 	protected Broadcast broadcast;
 	protected Lives lives;
 	
@@ -55,6 +57,7 @@ public abstract class World {
 		hoopBlaster = new HoopBlaster(this);
 		multiBall = new ArrayList<MultiBall>();
 		lives = new Lives(0);
+        menuTransition = new MenuTransition();
 	}
 	
 	public abstract void update(float delta, float runTime);
@@ -80,6 +83,10 @@ public abstract class World {
 	public Menu getMenu() {
 		return menu;
 	}
+
+    public MenuTransition getMenuTransition() {
+        return menuTransition;
+    }
 	
 	public Joystick getJoystick() {
 		return joystick;

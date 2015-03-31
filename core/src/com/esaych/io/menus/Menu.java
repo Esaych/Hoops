@@ -31,6 +31,7 @@ public class Menu {
 	private boolean waitingLogout = false;
 	private boolean rendering = false;
 	private MenuType finishRenderSetType = null;
+    private boolean locked = true;
 
 	private ArrayList<MenuButton> buttons = new ArrayList<MenuButton>();
 	private ArrayList<MenuLabel> labels = new ArrayList<MenuLabel>();
@@ -67,15 +68,28 @@ public class Menu {
     public void updateLabels(float delta) {
         for (MenuLabel label : labels)
             label.update(delta);
+        System.out.println("Labels Update");
+        world.getMenuTransition().update(delta, world);
+    }
+
+    public void allowTypeChange(boolean status) {
+        locked = !status;
     }
 
     private String hs = "%GAMEMODE% High Score: %HIGHSCORE%";
 
 	public void setType(MenuType mType) {
+        if (locked) {
+            System.out.println("Locked: " + mType.name());
+            MenuTransition.transitionTo(mType);
+            return;
+        }
 		if (rendering) {
 			finishRenderSetType = mType;
 			return;
 		}
+        locked = true; //relock for the next transition
+        System.out.println("Relocked");
 		type = mType;
 		switch (type) {
 		case DISABLED:

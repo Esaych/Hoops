@@ -199,6 +199,7 @@ public class Renderer {
         //Menus
         if (world.getMenu().isEnabled()) {
         	world.getMenu().render(shapeRenderer, batcher, runTime);
+            world.getMenuTransition().render(batcher, bgOffset, bgWdth, world);
         }
         
         //Complete drawing

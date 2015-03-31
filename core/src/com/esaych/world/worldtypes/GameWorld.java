@@ -8,6 +8,7 @@ import com.esaych.hoops.screen.GameScreen;
 import com.esaych.hoops.screen.GameScreen.GameState;
 import com.esaych.io.AssetLoader;
 import com.esaych.io.menus.Menu;
+import com.esaych.io.menus.MenuTransition;
 import com.esaych.io.menus.Options;
 import com.esaych.io.touch.Joystick;
 import com.esaych.objects.Explosion;
