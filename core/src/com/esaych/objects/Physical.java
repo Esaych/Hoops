@@ -58,12 +58,12 @@ public abstract class Physical {
 		}
 		
 		//Side Check
-//		if (PowerUps.hasPower("Matrix")) {
-//			if (pos.x > world.getWidth()+14)
-//				pos.x = -20;
-//			else if (pos.x < -20)
-//				pos.x = world.getWidth()+14;
-//		} else {
+		if (world.getScore() > 300) { //somewhat of a surprise >:)
+			if (pos.x > world.getWidth()+14)
+				pos.x = -20;
+			else if (pos.x < -20)
+				pos.x = world.getWidth()+14;
+		} else {
 			if (pos.x > world.getWidth()-21) {
 				vel.x *= -.8;
 				pos.x = world.getWidth()-21;
@@ -71,7 +71,7 @@ public abstract class Physical {
 				vel.x *= -.8;
 				pos.x = 7;
 			}
-//		}
+		}
 	}
 	
 	public int getXMaxSpeed() {
